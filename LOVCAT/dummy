@@ -1,0 +1,29 @@
+
+<script>
+	const nickreg = /[\S]{1,20}/;
+	const idreg = /[\w]{6,20}/;
+	const pswdreg = /[\w\?\!]{6,20}/;
+	function regcheck(text, reg) {
+		if (reg.test(text.value)) {
+			text.className = "";
+			return 0;
+		}
+		else {
+			text.className = "wrong";
+			text.focus();
+			return 1;
+		}
+	}
+	function check() {
+		var check = 0;
+		check += regcheck(pswd, /[\w\?\!]{6,20}/);
+		check += regcheck(id, /[\w]{6,20}/);
+		check += regcheck(nick, /[\S]{1,20}/);
+		if (pswd.value != cpswd.value) {
+			cpswd.className = "wrong";
+			check += 1;
+			cpswd.focus();
+		} else cpswd.className = "";
+		if (!check) document.getElementsByTagName("form")[0].submit();
+	}
+</script>

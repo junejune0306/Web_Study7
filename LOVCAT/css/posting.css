@@ -1,0 +1,23 @@
+h1 {
+	font-size: 50px;
+	margin: 10px 0;
+    text-align: center;
+}
+.frame1 {
+    margin: 20px 5%;
+    padding: 0 20px;
+    text-align: right;
+}
+label {
+    float: left;
+}
+input[type=text], textarea {
+    float: left;
+    display: block;
+    width: 100%;
+}
+textarea {
+    height: 500px;
+    max-width: 100%;
+    min-width: 100%;
+}

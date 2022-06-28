@@ -1,0 +1,39 @@
+.frame1 {
+    margin: 20px 5%;
+    padding: 20px;
+}
+.list{
+    border-collapse: collapse;
+    width: 100%;
+    text-align: center;
+}
+.list td{
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.list .header {
+	border-top: 2px solid #000;
+	border-bottom: 2px solid #000;
+}
+.list td:nth-child(1) {
+    width: 75%;
+}
+.list td:nth-child(2) {
+    width: 100px;
+}
+.list td:nth-child(3) {
+    width: 100px;
+}
+.list td:nth-child(4) {
+    width: 100px;
+}
+.list tr:not(.header) {
+	border-bottom: 1px solid #ccc;
+}
+.list tr:not(.header) td:first-child {
+    text-align: left;
+}
+
+a.btn {
+    float: right;
+}

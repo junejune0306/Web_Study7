@@ -1,0 +1,35 @@
+h1 {
+	font-size: 50px;
+	margin: 10px 0;
+}
+
+.frame1 {
+	position: relative;
+	margin: 68px 0 0 0;
+	width: 410px;
+	padding: 0 25px;
+}
+label {
+	float: left;
+}
+
+input, button {
+	width: 100%;
+	margin: 8px 0;
+	padding: 14px 20px;
+}
+.wrong {
+	border: 1px solid red !important;
+}
+.wrong:focus {
+	outline: 0;
+	border: 2px solid red !important;
+}
+
+#catonboard {
+	position: absolute;
+	height: 100px;
+	width: 100px;
+	left: 70px;
+	top: -74px;
+}

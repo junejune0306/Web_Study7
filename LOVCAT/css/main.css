@@ -1,0 +1,51 @@
+@font-face {
+	src: url("./whitecatfont.ttf");
+	font-family: "cat";
+}
+a, a:visited {
+	text-decoration: none;
+	color: inherit;
+}
+*:not([type=file], h1) {
+	font-family: "cat";
+	color: black;
+	font-size: 20px;
+	z-index: 1;
+}
+body {
+	background-image: url("background_0.png");
+	background-size: 120px;
+	position: relative;
+}
+.frame1 {
+	box-shadow: 0 0 15px black;
+	border-radius: 10px;
+	border: 5px solid #333;
+	background-color: #fff;
+}
+
+input[type=text], input[type=password], textarea {
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+label {
+	cursor: pointer;
+}
+
+input[type=submit], input[type=button], button, .btn {
+	background-color: #000;
+	border: 4px solid #000;
+	border-radius: 1px;
+	color: white;
+	cursor: pointer;
+}
+input[type=submit]:hover, input[type=button]:hover, button:hover, .btn:hover {
+	background-color: #555;
+	border: 4px solid #555;
+}
+input[type=submit]:active, input[type=button]:active, button:active, .btn:active {
+	background-color: #000;
+	border: 4px solid #FFF;
+	font-size: 18px;
+}
