@@ -12,6 +12,7 @@ body {
 }
 #navigation_bar a{
     color: #fff;
+    cursor: pointer;
 }
 #nblogo {
     font-weight: bold;

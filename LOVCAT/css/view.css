@@ -7,6 +7,38 @@ h1 {
     font-size: 40px;
 	margin: 10px 0;
 }
+#like {
+    text-align: center;
+}
+#like a {
+    display: inline-block;
+    margin: 10px;
+    padding: 50px 0 0 0;
+    width: 50px;
+    height: 20px;
+    border-radius: 10px;
+	box-shadow: 0 0 5px #aaa;
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+}
+.like a {
+    display: inline-block;
+    margin: 5px;
+    padding: 0 0 0 25px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+}
+#like a:first-child, .like a:first-child {
+    background-image: url('./like.png');
+}
+#like a:last-child, .like a:last-child {
+    background-image: url('./unlike.png');
+}
+#like a[href$="0"], .like a[href$="0"] {
+    font-weight: bold;
+    color: red;
+}
 form {
     padding: 10px;
     border-radius: 3px;
@@ -15,6 +47,10 @@ form {
 ul {
     margin: 0;
     padding: 0 0 0 20px;
+    list-style-type: "└";
+}
+li {
+    padding: 0 0 0 10px;
 }
 #comment_box {
     margin: 10px 0;
@@ -35,14 +71,34 @@ ul {
     margin: 10px 0 0 0;
     padding: 10px 0 0 0;
 }
-textarea {
+form textarea {
     height: 50px;
     max-width: 100%;
     min-width: 100%;
 }
+#content, .content, h1 {
+    word-break: break-all;
+}
+.file {
+    height: 20px;
+    padding: 0 25px 0 0;
+    border: 1px solid #777;
+    background-image: url('./file.png');
+    background-size: 20px 20px;
+    background-position: right;
+    background-repeat: no-repeat;
+}
+.jpg, .png {
+    background-image: url('./image.png');
+}
 .secret {
     color: #777;
+    font-weight: normal;
 }
-.replybtn, .editbtn {
+.replybtn, .editbtn, .frame1 a {
     cursor: pointer;
+}
+.btn {
+    float: right;
+    margin: 5px;
 }

@@ -7,7 +7,7 @@
 
 	$check = 0;
 	$_SESSION['check'] = array(0,0,0,0,0);
-	$check += $_SESSION['check'][0] += 1 - preg_match('/^[[:graph:]]{1,20}$/', $_POST['nick']);
+	$check += $_SESSION['check'][0] += 1 - preg_match('/^[[:graph:]가-힣]{1,20}$/', $_POST['nick']);
 	$check += $_SESSION['check'][1] += 1 - preg_match('/^[[:alnum:]\_]{6,20}$/', $_POST['id']);
 	$check += $_SESSION['check'][2] += 1 - preg_match('/^[[:alnum:]\_\?\!]{8,20}$/', $_POST['pswd']);
 	if ($_POST['pswd'] != $_POST['cpswd']) $check += $_SESSION['check'][3] += 1;

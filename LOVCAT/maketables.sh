@@ -14,8 +14,9 @@ create table post(
 	id varchar(20) not null, 
 	dt datetime default current_timestamp, 
 	updt datetime, 
-	title varchar(255) not null, 
-	content text
+	title varchar(255), 
+	content text, 
+	parent int
 );
 create table views(
 	seq int not null, 

@@ -1,0 +1,31 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>LOVCAT - guest book</title>
+		<link rel="stylesheet" href="guestBook.css">
+	</head>
+	<body>
+		<div id="headline">LOV CAT
+			<img id="catonboard" src="catonboard.png">
+		</div><br>
+		<div id="book"><div id="bookt">guest book</div>
+			<button id="addbtn" class="btn" onclick="document.getElementById('addBook').style.display = 'inline-block';">write</button>
+			<div id="addBook">
+				<form method="post" action="" enctype="multipart/form-data" onkeydown="return event.key != 'Enter';">
+					<input type="text" name="name" placeholder="write your name...(up to 255)" autocomplete="off"/>
+					<input type="text" name="text" placeholder="write text...(up to 4095)" autocomplete="off"/>
+					<input type="file" name="attachment">
+					<input type="submit" class="btn" value="submit"/>
+				</form>
+			</div>
+			<% for (var i of list) { %><div class="page">
+				<div class="head"><%= i.name %> <span> <%= i.time %></span></div><div class="text"><%= i.text %>
+				</div><a class="file" href="/download/<%= i.file %>">file: <%= i.file %></a><div class="config"><span onclick="this.parentNode.nextSibling.style.display='block';this.parentNode.previousSibling.previousSibling.innerHTML='';console.log(this.parentNode.previousSibling.previousSibling)">수정</span> <span onclick="location.href='/delete/<%= i.seq %>'">삭제</span>
+				</div><form method="post" action="/modify/<%= i.seq %>">
+					<input type="text" value="<%= i.text %>" name="text" placeholder="write text...(up to 4095)" autocomplete="off"/>
+                                        <input type="submit" class="btn" value="modify"/>
+				</form>
+			</div><% } %>
+		</div>
+	</body>
+</html>

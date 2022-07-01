@@ -1,0 +1,114 @@
+@font-face {
+	src: url("./whitecatfont.ttf");
+	font-family: "cat";
+}
+* {
+	font-family: "cat";
+	color: black;
+}
+body {
+	background-image: url("background_0.png");
+	text-align: center;
+}
+form {
+	margin: 0;
+}
+
+.btn {
+	background-color: #000000;
+	border: none;
+	color: white;
+	cursor: pointer;
+}
+.btn:hover {
+	background-color: #555555;
+}
+.btn:active {
+	background-color: #000000;
+}
+
+#headline {
+	display: inline-block;
+	position: relative;
+	margin: 30px 0 0 0;
+	padding: 15px 65px;
+	border: 15px solid black;
+	border-radius: 30px;
+	background-color: white;
+	font-size: 100px;
+}
+#catonboard {
+	position: absolute;
+	height: 100px;
+	width: 100px;
+	bottom: -33px;
+	right: 33px;
+}
+
+#book {
+	display: inline-block;
+	position: relative;
+	margin: 30px 0;
+	padding: 15px 20px;
+	border: 7px solid black;
+	border-radius: 10px;
+	background-color: white;
+	width: 85%;
+	font-size: 20px;
+}
+#bookt {
+	font-weight: bold;
+	font-size: 30px;
+	line-height: 0px;
+	margin: 0 0 20px 0;
+}
+
+#addbtn {
+	position: absolute;
+	top: 4px;
+	right: 10px;
+	padding: 4px 7px;
+	font-size: 17px;
+}
+#addbook {
+	display: none;
+	width: 100%;
+}
+input {
+	display: inline-block;
+	padding: 6px 10px;
+	width: 100%;
+	margin: 5px 0;
+	border: 1px solid #bbb;
+	border-radius: 4px;
+	font-size: 20px;
+}
+
+.page {
+	position: relative;
+	padding: 10px 0;
+	border-top: 1px solid #ccc;
+	text-align: left;
+	font-size: 20px;
+}
+.page .head {
+	font-weight: bold;
+	font-size: 23px;
+}
+.page span {
+	font-weight: light;
+	font-size: 15px;
+	color: #aaa;
+}
+.page .config {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: default;
+}
+.page .config span {
+	cursor: pointer;
+}
+.page form {
+	display: none;
+}

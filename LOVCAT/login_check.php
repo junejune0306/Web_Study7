@@ -5,9 +5,10 @@
 	include('./dbinit.php');
 	
 	$result = mysqli_query($conn, 'select pswd, nick from userlist where id="'.$_POST['id'].'"');
-	if ("" != $pswd = mysqli_fetch_row($result) and $pswd[0] == $_POST['pswd']) {
+	if ("" != $pswd = mysqli_fetch_row($result) and $pswd[0] == $_POST['pswd'] and preg_match('/^[[:alnum:]\_\?\!]{8,20}$/', $_POST['pswd'])) {
 		$_SESSION = array();
 		$_SESSION['userinfo'] = array($_POST['id'], $pswd[1]);
+		$_SESSION['pagesize'] = 10;
 		header('Location: ./home.php');
 	}
 	else {
