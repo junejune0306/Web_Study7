@@ -4,7 +4,6 @@
 }
 a, a:visited {
 	text-decoration: none;
-	color: inherit;
 }
 *:not([type=file], h1) {
 	font-family: "cat";

@@ -4,9 +4,8 @@
 	else {
 	include('./dbinit.php');
 	
-    if (($parent = mysqli_fetch_row(mysqli_query($conn, 'select * from post where seq='.$_POST['parentid'].' and type!=4 and type!=14')))) {
-        $type = ($parent[1] % 10 == 2) ? 4 : 2;
-        if ($_POST['secret'] == 1) $type += 10;
+    if (($parent = mysqli_fetch_row(mysqli_query($conn, 'select * from post where seq='.$_POST['parentid'])))) {
+        $type = ($_POST['secret'] == 1) ? 12 : 2;
         mysqli_query($conn, 'insert into post(type, nick, id, content, parent) values ('.$type.', \''.$_SESSION['userinfo'][1].'\', \''.$_SESSION['userinfo'][0].'\', \''.$_POST['comment'].'\', '.$parent[0].');');
         if (isset($_FILES['userfile']) and !$_FILES['userfile']['error']) {
             $path = './upload/'.mysqli_fetch_row(mysqli_query($conn, "select max(seq) from post"))[0];
