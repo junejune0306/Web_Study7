@@ -1,5 +1,7 @@
 <?php
 	session_start();
+	//error_reporting( E_ALL );
+	//ini_set( "display_errors", 1 );
 ?>
 <html>
 	<head>
@@ -37,28 +39,39 @@
 				</tr>
 <?php
 	include('./dbinit.php');
+	function comment_count($conn, $parent_id) { //calculate comment count
+		$comment = mysqli_query($conn, "select seq from post where parent=$parent_id and (type=2 or type=12)");
+		$c = $comment->num_rows;
+		while ($co = mysqli_fetch_row($comment)[0]) {
+			$c += comment_count($conn, $co);
+		}
+		return $c;
+	}
 	$p = (round($_GET['page']) > 1) ? $_GET['page'] - 1 : 0;
 	$ps = ($_SESSION['pagesize'] > 0) ? $_SESSION['pagesize'] : 10;
+	/* post list start */
 	$result = mysqli_query($conn, 'select seq, title, id, dt from post where '.(($_SESSION['search']) ? 'title like \'%'.$_SESSION['search'].'%\' and ' : '').'(type=1 or (type=11 and id=\''.$_SESSION['userinfo'][0]."')) order by seq desc limit ".($p++*$ps).", $ps");
 	while ($r = mysqli_fetch_row($result)) {
-		$comment = mysqli_query($conn, "select seq from post where parent=$r[0] and (type=2 or type=12)");
-		$c = $comment->num_rows;
-		while ($co = mysqli_fetch_row($comment)[0]) $c += mysqli_fetch_row(mysqli_query($conn, "select count(*) from post where parent=$co and (type=4 or type=14)"))[0];
+		//get comment count
+		$c = comment_count($conn, $r[0]);
+		//get views
 		$v = mysqli_fetch_row(mysqli_query($conn, "select count(*) from views where seq=$r[0]"))[0];
+		//get writer's nickname
 		$w = htmlspecialchars(mysqli_fetch_row(mysqli_query($conn, "select nick from userlist where id='$r[2]'"))[0]);
+		//show post cell
 		echo "<tr><td><a href=\"view.php?postid=$r[0]\">".htmlspecialchars($r[1])."</a>".(($c) ? " <span>[$c]</span>" : '')."</td><td>$w</td><td>".htmlspecialchars($r[3])."</td><td>$v</td></tr>";
+		//respond (same process)
 		$respond = mysqli_query($conn, "select seq, title, id, dt from post where parent=$r[0] and (type=3 or (type=13 and id='".$_SESSION['userinfo'][0]."')) order by seq desc");
 		if ($respond->num_rows) {
 			while ($re = mysqli_fetch_row($respond)) {
-				$comment = mysqli_query($conn, "select seq from post where parent=$re[0] and (type=2 or type=12)");
-				$c = $comment->num_rows;
-				while ($co = mysqli_fetch_row($comment)[0]) $c += mysqli_fetch_row(mysqli_query($conn, "select count(*) from post where parent=$co and (type=4 or type=14)"))[0];
+				$c = comment_count($conn, $re[0]);
 				$v = mysqli_fetch_row(mysqli_query($conn, "select count(*) from views where seq=$re[0]"))[0];
 				$w = htmlspecialchars(mysqli_fetch_row(mysqli_query($conn, "select nick from userlist where id='$re[2]'"))[0]);
 				echo "<tr><td><a href=\"view.php?postid=$re[0]\"> └ ".htmlspecialchars($re[1])."</a>".(($c) ? " <span>[$c]</span>" : '')."</td><td>$w</td><td>".htmlspecialchars($re[3])."</td><td>$v</td></tr>";
 			}
 		}
 	}
+	/* post list end */
 ?>
 			</table><br>
 			<div id="paging">
